@@ -35,19 +35,72 @@ namespace MatchGame
 
         private void SetupGame()
         {
-            List<string> animalEmoji = new List<string>()
-            {
-                "🐙","🐙",
-                "🐡","🐡",
-                "🐘","🐘",
-                "🐳","🐳",
-                "🐫","🐫",
-                "🦕","🦕",
-                "🦘","🦘",
-                "🦔","🦔"
+            Random random = new Random();
+
+            var allAnimalEmoji = new List<string>() {
+                "🐒",
+                "🦍",
+                "🦧",
+                "🐅",
+                "🐆",
+                "🐎",
+                "🦌",
+                "🦏",
+                "🦛",
+                "🐃",
+                "🐄",
+                "🐖",
+                "🐏",
+                "🐑",
+                "🐐",
+                "🐪",
+                "🐫",
+                "🦙",
+                "🦘",
+                "🦥",
+                "🦨",
+                "🦡",
+                "🐘",
+                "🐁",
+                "🐀",
+                "🦔",
+                "🐇",
+                "🐿",
+                "🦎",
+                "🐊",
+                "🐢",
+                "🐍",
+                "🦦",
+                "🦈",
+                "🐬",
+                "🐳",
+                "🐋",
+                "🐙",
+                "🦞",
+                "🦀",
+                "🦆",
+                "🐓",
+                "🦃",
+                "🦅",
+                "🦢",
+                "🦜",
+                "🦩" ,
+                "🦚",
+                "🦉",
+                "🐧",
+                "🦇"
             };
 
-            Random random = new Random();
+            List<string> animalEmoji = new List<string>() { };
+
+            for (int i = 0; i < 8; i++)
+            {
+                int index = random.Next(allAnimalEmoji.Count());
+                string nextEmoji = allAnimalEmoji[index];
+                allAnimalEmoji.RemoveAt(index);
+                animalEmoji.Add(nextEmoji);
+                animalEmoji.Add(nextEmoji);
+            }
 
             foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
             {
@@ -96,7 +149,7 @@ namespace MatchGame
         {
             tengthOfSecondsElapsed++;
             timeTextBlock.Text = (tengthOfSecondsElapsed / 10F).ToString("0.0s");
-            
+
             if (matchesFound == 8)
             {
                 timer.Stop();
